@@ -7,6 +7,7 @@ var pageContentEl = document.querySelector("#page-content");
 var tasksInProgressEl = document.querySelector("#tasks-in-progress");
 var tasksCompletedEl = document.querySelector("#tasks-completed");
 
+var tasks = [];
 
 
 var taskFormHandler = function(event) {
@@ -32,7 +33,8 @@ var taskFormHandler = function(event) {
         // package up data as an object
         var taskDataObj = {
             name: taskNameInput,
-            type: taskTypeInput
+            type: taskTypeInput,
+            status: "to do"
         };
         // sent it as an arguement to createTaskEl
         createTaskEl(taskDataObj);
@@ -66,6 +68,10 @@ var createTaskEl = function(taskDataObj) {
     // add entire list item to list
     tasksToDoEl.appendChild(listItemEl)
 
+    taskDataObj.id = taskIdCounter;
+    tasks.push(taskDataObj);
+
+    console.log(tasks);
     taskIdCounter++
 }
 
